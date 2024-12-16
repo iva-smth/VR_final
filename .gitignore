@@ -37,3 +37,6 @@ Desktop.ini
 /[Aa]ssets/AddressableAssetsData/AssetGroups/*.bin*
 /[Aa]ddressables_content_state.bin
 /[Bb]uilds/*
+
+# Игнорировать тяжелую папку
+/Assets/LB6/lb6_lightting/StarSkybox04
