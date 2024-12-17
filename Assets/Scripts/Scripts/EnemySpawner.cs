@@ -68,7 +68,7 @@ public class EnemySpawner : MonoBehaviour
             yield return StartCoroutine(SpawnWave());
             yield return new WaitForSeconds(waveDelay);
             yield return StartCoroutine(WaitForPlayerDecision());
-            healthMultiplier *= 1.05f;
+            healthMultiplier *= 1.1f;
             damageMultiplier *= 1.05f;
         }
     }
