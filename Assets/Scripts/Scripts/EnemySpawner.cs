@@ -17,11 +17,30 @@ public class EnemySpawner : MonoBehaviour
     private float healthMultiplier = 1f; // Множитель здоровья врагов
     private float damageMultiplier = 1f; // Множитель урона врагов
     private int lastWaveNum = 0;
+    public List<Transform> spawnerList = new List<Transform>();
 
     private void Start()
     {
         GenerateSpawnPoints();
         StartCoroutine(WaveController());
+    }
+
+    private void FindSpawners(Transform parent)
+    {
+        foreach (Transform child in parent)
+        {
+            // Проверка тега дочернего объекта
+            if (child.CompareTag("Spawner"))
+            {
+                spawnerList.Add(child);
+            }
+
+            // Рекурсивный вызов для поиска в дочерних объектах
+            if (child.childCount > 0)
+            {
+                FindSpawners(child);
+            }
+        }
     }
 
     private void GenerateSpawnPoints()
@@ -34,8 +53,11 @@ public class EnemySpawner : MonoBehaviour
         }
 
         Bounds bounds = collider.bounds; // Границы объекта
-        float step = 0.5f; // Шаг между точками, уменьшаем для большей детализации
+        Debug.Log(collider.bounds);
+        FindSpawners(transform);
 
+        float step = 0.5f; // Шаг между точками, уменьшаем для большей детализации
+        int count = 0;
         for (float x = bounds.min.x; x <= bounds.max.x; x += step)
         {
             for (float z = bounds.min.z; z <= bounds.max.z; z += step)
@@ -45,12 +67,13 @@ public class EnemySpawner : MonoBehaviour
                 // Проверяем поверхность объекта через Raycast
                 if (Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit hit, Mathf.Infinity))
                 {
-                    if (hit.collider.gameObject == this.gameObject) // Убедимся, что точка принадлежит текущему объекту
+                    // Проверяем, принадлежит ли точка NavMesh
+                    NavMeshHit navMeshHit;
+                    if (NavMesh.SamplePosition(hit.point, out navMeshHit, 1f, NavMesh.AllAreas))
                     {
-                        // Проверяем, принадлежит ли точка NavMesh
-                        NavMeshHit navMeshHit;
-                        if (NavMesh.SamplePosition(hit.point, out navMeshHit, 1f, NavMesh.AllAreas))
+                        if (hit.collider.gameObject.tag == "Spawner")
                         {
+                            Debug.Log(hit.point);
                             spawnPoints.Add(navMeshHit.position);
                         }
                     }
@@ -58,6 +81,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
+        Debug.Log($"Сгенерировано точек спавна: {count}");
         Debug.Log($"Сгенерировано точек спавна: {spawnPoints.Count}");
     }
 
@@ -68,7 +92,7 @@ public class EnemySpawner : MonoBehaviour
             yield return StartCoroutine(SpawnWave());
             yield return new WaitForSeconds(waveDelay);
             yield return StartCoroutine(WaitForPlayerDecision());
-            healthMultiplier *= 1.05f;
+            healthMultiplier *= 1.1f;
             damageMultiplier *= 1.05f;
         }
     }
@@ -114,10 +138,10 @@ public class EnemySpawner : MonoBehaviour
             float heightOffset = GetEnemyHeight(enemy) / 2f;
             enemy.transform.position += Vector3.up * heightOffset;
 
-
-            if (enemy.TryGetComponent<EnemyBehaviour>(out var behaviour))
+            EnemyBehaviour enemyBehaviour = enemy.GetComponent<EnemyBehaviour>();
+            if (enemyBehaviour != null)
             {
-                behaviour.SetStats(healthMultiplier, damageMultiplier);
+                enemyBehaviour.SetStats(healthMultiplier, damageMultiplier);
             }
 
             EnemyManager.Instance.RegisterEnemy(enemy);

@@ -18,6 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private Transform treeTarget;
     private NavMeshAgent agent;
+    private NavMeshObstacle obstacle;
 
     private bool isNearTree = false; // Флаг нахождения рядом с ёлкой
 
@@ -29,8 +30,11 @@ public class EnemyBehaviour : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        obstacle = GetComponent<NavMeshObstacle>();
         treeTarget = GameObject.FindWithTag("Tree")?.transform;
         if (treeTarget != null) agent.SetDestination(treeTarget.position);
+
+       // Debug.Log(gameObject.GetComponent<Collider>().size);
     }
 
     void Update()
@@ -54,7 +58,7 @@ public class EnemyBehaviour : MonoBehaviour
             case EnemyType.Weak:
                 health = 50f * healthMultiplier;
                 damage = 5f * damageMultiplier;
-                speed = 3.5f;
+                speed = 2.75f;
                 break;
 
             case EnemyType.Normal:
@@ -66,10 +70,11 @@ public class EnemyBehaviour : MonoBehaviour
             case EnemyType.Strong:
                 health = 150f * healthMultiplier;
                 damage = 20f * damageMultiplier;
-                speed = 1.5f;
+                speed = 2.25f;
                 break;
         }
 
+        agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
     }
 
@@ -93,6 +98,10 @@ public class EnemyBehaviour : MonoBehaviour
         if (other.CompareTag("Tree"))
         {
             isNearTree = true;
+
+            agent.enabled = false;
+            obstacle.enabled = true;
+
             if (damageCoroutine == null)
             {
                 damageCoroutine = StartCoroutine(DamageTreeOverTime());
@@ -100,18 +109,24 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
+
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Tree"))
         {
             isNearTree = false;
-            if (damageCoroutine != null) 
+
+            obstacle.enabled = false;
+            agent.enabled = true;
+
+            if (damageCoroutine != null)
             {
                 StopCoroutine(damageCoroutine);
                 damageCoroutine = null;
             }
         }
     }
+
 
 
     private IEnumerator DamageTreeOverTime()

@@ -29,7 +29,6 @@ public class SnowBlower : MonoBehaviour
             {
                 FireSnowball();
                 currentAmmo--;
-                UIManager.Instance.UpdateAmmoUI(currentAmmo, maxAmmo);
 
                 if (currentAmmo <= 0)
                 {
@@ -55,11 +54,8 @@ public class SnowBlower : MonoBehaviour
     private IEnumerator Reload()
     {
         isReloading = true;
-        UIManager.Instance.ShowReloadText(true);
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = maxAmmo;
-        UIManager.Instance.ShowReloadText(false);
-        UIManager.Instance.UpdateAmmoUI(currentAmmo, maxAmmo);
         isReloading = false;
     }
 }
