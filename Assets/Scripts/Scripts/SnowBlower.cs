@@ -13,6 +13,7 @@ public class SnowBlower : MonoBehaviour
 
     private int currentAmmo;
     private bool isReloading;
+    private float reloadTime = 5f;
 
     void Start()
     {

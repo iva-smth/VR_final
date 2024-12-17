@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class TreeBehaviour : MonoBehaviour
 {
-    public int maxHealth = 500;
-    private int currentHealth;
+    public static TreeBehaviour instance;
+
+    public float maxHealth = 500;
+    private float currentHealth;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -13,7 +20,7 @@ public class TreeBehaviour : MonoBehaviour
         UIManager.Instance.UpdateTreeHealth(currentHealth, maxHealth);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         UIManager.Instance.UpdateTreeHealth(currentHealth, maxHealth);

@@ -103,7 +103,7 @@ public class EnemySpawner : MonoBehaviour
             Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Count)];
 
             int randomIndex = Random.Range(0, availableSpawnPoints.Count);
-            Vector3 spawnPosition = availableSpawnPoints[randomIndex];
+            spawnPosition = availableSpawnPoints[randomIndex];
 
             availableSpawnPoints.RemoveAt(randomIndex);
 

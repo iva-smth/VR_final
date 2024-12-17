@@ -23,6 +23,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     private Coroutine damageCoroutine;
 
+    private float damageTimer = 0;
+    private float damageInterval = 3;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -38,7 +41,7 @@ public class EnemyBehaviour : MonoBehaviour
             damageTimer += Time.deltaTime;
             if (damageTimer >= damageInterval)
             {
-                DealDamageToTree();
+                TreeBehaviour.instance.TakeDamage(damage);
                 damageTimer = 0f;
             }
         }

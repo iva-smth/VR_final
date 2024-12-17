@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
         nextWaveMenu.SetActive(false);
     }
 
-    public void UpdateTreeHealth(int currentHealth, int maxHealth)
+    public void UpdateTreeHealth(float currentHealth, float maxHealth)
     {
         if (treeHealthSlider != null)
         {
