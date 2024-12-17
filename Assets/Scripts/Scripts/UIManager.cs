@@ -8,8 +8,6 @@ public class UIManager : MonoBehaviour
     public GameObject nextWaveMenu;
     public GameObject gameOverMenu;
     public Slider treeHealthSlider;
-    public Text reloadText;
-    public Text ammoText;
 
     private void Awake()
     {
@@ -39,22 +37,6 @@ public class UIManager : MonoBehaviour
         {
             treeHealthSlider.maxValue = maxHealth;
             treeHealthSlider.value = currentHealth;
-        }
-    }
-
-    public void ShowReloadText(bool isReloading)
-    {
-        if (reloadText != null)
-        {
-            reloadText.gameObject.SetActive(isReloading);
-        }
-    }
-
-    public void UpdateAmmoUI(int currentAmmo, int maxAmmo)
-    {
-        if (ammoText != null)
-        {
-            ammoText.text = $"Ammo: {currentAmmo}/{maxAmmo}";
         }
     }
 
