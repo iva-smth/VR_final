@@ -5,8 +5,14 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2419386515181780570, guid: c7e88846fa884dc41aa78fafaf1e6a4b,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8488539476309902102, guid: c7e88846fa884dc41aa78fafaf1e6a4b,
         type: 3}
       propertyPath: m_RootOrder
@@ -65,7 +71,36 @@ PrefabInstance:
     - target: {fileID: 9117125134822758828, guid: c7e88846fa884dc41aa78fafaf1e6a4b,
         type: 3}
       propertyPath: m_Name
-      value: Pine_Tree_15
+      value: Pine_Tree_15 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9117125134822758828, guid: c7e88846fa884dc41aa78fafaf1e6a4b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2772019738983716010}
   m_SourcePrefab: {fileID: 100100000, guid: c7e88846fa884dc41aa78fafaf1e6a4b, type: 3}
+--- !u!1 &916048966132077637 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9117125134822758828, guid: c7e88846fa884dc41aa78fafaf1e6a4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8228354348003872233}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2772019738983716010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916048966132077637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 4, y: 3, z: 4}
+  m_Center: {x: 0, y: 1, z: 0}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
