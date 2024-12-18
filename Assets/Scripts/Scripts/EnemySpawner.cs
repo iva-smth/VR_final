@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnInterval = 5f; // Интервал спавна врагов
 
     private float timeSinceLastSpawn;
-    private List<Vector3> spawnPoints = new List<Vector3>(); // Список точек для спавна
+    public List<Transform> spawnPoints = new List<Transform>(); // Список точек для спавна
 
     private int enemiesPerSpawn = 3; // Количество врагов за раз
     private int totalEnemiesInWave = 9; // Всего врагов в одной волне
@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        GenerateSpawnPoints();
+        //GenerateSpawnPoints();
         StartCoroutine(WaveController());
     }
 
@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
     }
-
+    /*
     private void GenerateSpawnPoints()
     {
         Collider collider = GetComponent<Collider>();
@@ -65,16 +65,21 @@ public class EnemySpawner : MonoBehaviour
                 Vector3 rayOrigin = new Vector3(x, bounds.max.y + 1f, z); // Старт луча над объектом
 
                 // Проверяем поверхность объекта через Raycast
-                if (Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit hit, Mathf.Infinity))
+                if (Physics.Raycast(rayOrigin, Vector3.up, out RaycastHit upHit, Mathf.Infinity))
                 {
-                    // Проверяем, принадлежит ли точка NavMesh
-                    NavMeshHit navMeshHit;
-                    if (NavMesh.SamplePosition(hit.point, out navMeshHit, 1f, NavMesh.AllAreas))
+                    Debug.Log("1");
+                    if (upHit.collider.gameObject.tag == "Spawner")
                     {
-                        if (hit.collider.gameObject.tag == "Spawner")
+                        Debug.Log("spawner");
+                        if (Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit downHit, Mathf.Infinity))
                         {
-                            Debug.Log(hit.point);
-                            spawnPoints.Add(navMeshHit.position);
+                            // Проверяем, принадлежит ли точка NavMesh
+                            NavMeshHit navMeshHit;
+                            if (NavMesh.SamplePosition(downHit.point, out navMeshHit, 1f, NavMesh.AllAreas))
+                            {
+                                Debug.Log(downHit.point);
+                                spawnPoints.Add(navMeshHit.position);
+                            }
                         }
                     }
                 }
@@ -83,7 +88,8 @@ public class EnemySpawner : MonoBehaviour
 
         Debug.Log($"Сгенерировано точек спавна: {count}");
         Debug.Log($"Сгенерировано точек спавна: {spawnPoints.Count}");
-    }
+    }*/
+
 
     private IEnumerator WaveController()
     {
@@ -113,7 +119,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemies(int count)
     {
-        List<Vector3> availableSpawnPoints = new List<Vector3>(spawnPoints);
+        List<Transform> availableSpawnPoints = new List<Transform>(spawnPoints);
 
         for (int i = 0; i < count; i++)
         {
@@ -124,10 +130,11 @@ public class EnemySpawner : MonoBehaviour
             }
 
             // Выбираем случайную точку спавна из доступных
-            Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Count)];
+            //Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Count)];
+            Vector3 spawnPosition;
+            int randomIndex = Random.Range(0, spawnPoints.Count);
+            spawnPosition = availableSpawnPoints[randomIndex].position;
 
-            int randomIndex = Random.Range(0, availableSpawnPoints.Count);
-            spawnPosition = availableSpawnPoints[randomIndex];
 
             availableSpawnPoints.RemoveAt(randomIndex);
 

@@ -20,12 +20,6 @@ public class TreeBehaviour : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-        UIManager.Instance.UpdateTreeHealth(currentHealth, maxHealth);
-    }
-
-    private void Update()
-    {
-        
     }
 
     public void TakeDamage(float damage)
@@ -47,7 +41,5 @@ public class TreeBehaviour : MonoBehaviour
             Debug.Log("Ёлка уничтожена! Игра окончена.");
             UIManager.Instance.ShowGameOverMenu();
         }
-
-        
     }
 }
