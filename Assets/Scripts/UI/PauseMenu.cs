@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour
     public bool isMenuCalled = false;
 
     public void MoveInFront()
-    {
+    {/*
         if (playerCamera != null)
         {
             // Рассчитываем позицию перед игроком на заданном расстоянии 
@@ -24,6 +24,9 @@ public class PauseMenu : MonoBehaviour
             // Поворачиваем объект, чтобы он был направлен на игрока 
             menu.LookAt(new Vector3(playerCamera.position.x, transform.position.y, playerCamera.position.z)); 
         }
+        */
+
+        
     }
 
     private void OnEnable()
@@ -40,12 +43,15 @@ public class PauseMenu : MonoBehaviour
 
     private void OnButtonPressed(InputAction.CallbackContext context)
     {
+        Debug.Log("hi");
         if (!isMenuCalled)
         {
+            menu.gameObject.SetActive(true);
             MoveInFront();
         }
         else
         {
+            menu.gameObject.SetActive(false);
             menu.transform.position = new Vector3(0f, 100f, 0f);
         }
         isMenuCalled = !isMenuCalled;

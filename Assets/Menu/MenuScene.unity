@@ -828,6 +828,40 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1200049895}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1073075246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 447842835445692260, guid: 0ab68914ca5b4ae48944db2ecf8a348c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1136986030}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1073075257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073075246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8f52636b64427488dc2b9ce47a7a0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TapButton:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Tap Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 33701273-8c74-47f3-9a0e-10a5792c6c20
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  playerCamera: {fileID: 872464746}
+  menu: {fileID: 999523444}
+  distanceFromPlayer: 2
+  isMenuCalled: 0
 --- !u!1001 &1136986030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -925,7 +959,11 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 853154587236065772, guid: 0ab68914ca5b4ae48944db2ecf8a348c, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 447842835445692260, guid: 0ab68914ca5b4ae48944db2ecf8a348c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1073075257}
   m_SourcePrefab: {fileID: 100100000, guid: 0ab68914ca5b4ae48944db2ecf8a348c, type: 3}
 --- !u!1001 &1184944933
 PrefabInstance:
@@ -1062,22 +1100,22 @@ PrefabInstance:
     - target: {fileID: 651263211607122271, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 651263211607122271, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 651263211607122271, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 651263211607122271, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -460
       objectReference: {fileID: 0}
     - target: {fileID: 1184613280938179153, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
@@ -1142,7 +1180,7 @@ PrefabInstance:
     - target: {fileID: 3553653336421497151, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3553653336421497151, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
@@ -1172,7 +1210,7 @@ PrefabInstance:
     - target: {fileID: 3553653336421497151, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3553653336421497151, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
@@ -1192,36 +1230,37 @@ PrefabInstance:
     - target: {fileID: 4167061391052235051, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594630193647763418, guid: 892051032f7942f4d835342e8ca493b5,
+        type: 3}
+      propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8681061941200427801, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8681061941200427801, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8681061941200427801, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 8681061941200427801, guid: 892051032f7942f4d835342e8ca493b5,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -340
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1184613280938179153, guid: 892051032f7942f4d835342e8ca493b5,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1632555545}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 892051032f7942f4d835342e8ca493b5, type: 3}
 --- !u!1 &1339540063
 GameObject:
@@ -2137,48 +2176,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99393a8af01243347bbc61565df33628, type: 3}
---- !u!1 &1632555544 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1184613280938179153, guid: 892051032f7942f4d835342e8ca493b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1200049895}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1632555545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1632555544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8f52636b64427488dc2b9ce47a7a0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TapButton:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Tap Button
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: d4b438a6-bb87-4935-b133-21ce51654357
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: 11a0b0d5-2070-4c16-8b6c-fde4349c3855
-        m_Path: <XRController>{LeftHand}/secondaryButton
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Tap Button
-        m_Flags: 0
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  playerCamera: {fileID: 872464746}
-  menu: {fileID: 999523444}
-  distanceFromPlayer: 2
-  isMenuCalled: 0
 --- !u!1 &1817581316
 GameObject:
   m_ObjectHideFlags: 0
