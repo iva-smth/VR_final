@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public enum EnemyType { Weak, Normal, Strong }
 
@@ -13,6 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     public EnemyType enemyType;
 
     private float health;
+    private float maxHealth;
     private float damage;
     private float speed;
 
@@ -27,6 +29,8 @@ public class EnemyBehaviour : MonoBehaviour
     private float damageTimer = 0;
     private float damageInterval = 3;
 
+    public Image healthBar;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -39,16 +43,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Update()
     {
-        // Если враг находится рядом с ёлкой, наносим ей урон
-        //if (isNearTree)
-        //{
-          //  damageTimer += Time.deltaTime;
-            //if (damageTimer >= damageInterval)
-            //{
-                //TreeBehaviour.instance.TakeDamage(damage);
-              //  damageTimer = 0f;
-            //}
-        //}
+        
     }
 
     public void SetStats(float healthMultiplier, float damageMultiplier)
@@ -76,6 +71,8 @@ public class EnemyBehaviour : MonoBehaviour
 
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
+
+        maxHealth = health;
     }
 
     public void TakeDamage(float damageAmount)
@@ -84,7 +81,18 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (health <= 0)
         {
+            healthBar.fillAmount = 0;
             Die();
+        }
+
+        healthBar.fillAmount = health / maxHealth;
+        if (health < maxHealth / 2)
+        {
+            healthBar.color = Color.yellow;
+        }
+        if (health < maxHealth / 3)
+        {
+            healthBar.color = Color.red;
         }
     }
 

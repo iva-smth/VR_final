@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class LookAtTarget : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
+
+    private void Start()
+    {
+        target = GameObject.FindWithTag("MainCamera").transform;
+    }
 
     void Update()
     {

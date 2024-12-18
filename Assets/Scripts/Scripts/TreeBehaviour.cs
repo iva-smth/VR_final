@@ -25,20 +25,23 @@ public class TreeBehaviour : MonoBehaviour
 
     private void Update()
     {
+        
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+
         healthBar.fillAmount = currentHealth / maxHealth;
-        if (currentHealth < maxHealth/2) {
+        if (currentHealth < maxHealth / 2)
+        {
             healthBar.color = Color.yellow;
         }
         if (currentHealth < maxHealth / 3)
         {
             healthBar.color = Color.red;
         }
-    }
 
-    public void TakeDamage(float damage)
-    {
-        currentHealth -= damage;
-        UIManager.Instance.UpdateTreeHealth(currentHealth, maxHealth);
         if (currentHealth <= 0)
         {
             Debug.Log("Ёлка уничтожена! Игра окончена.");
