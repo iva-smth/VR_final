@@ -40,15 +40,15 @@ public class EnemyBehaviour : MonoBehaviour
     void Update()
     {
         // Если враг находится рядом с ёлкой, наносим ей урон
-        if (isNearTree)
-        {
-            damageTimer += Time.deltaTime;
-            if (damageTimer >= damageInterval)
-            {
-                TreeBehaviour.instance.TakeDamage(damage);
-                damageTimer = 0f;
-            }
-        }
+        //if (isNearTree)
+        //{
+          //  damageTimer += Time.deltaTime;
+            //if (damageTimer >= damageInterval)
+            //{
+                //TreeBehaviour.instance.TakeDamage(damage);
+              //  damageTimer = 0f;
+            //}
+        //}
     }
 
     public void SetStats(float healthMultiplier, float damageMultiplier)
@@ -57,20 +57,20 @@ public class EnemyBehaviour : MonoBehaviour
         {
             case EnemyType.Weak:
                 health = 50f * healthMultiplier;
-                damage = 5f * damageMultiplier;
+                damage = 0.5f * damageMultiplier;
                 speed = 2.75f;
                 break;
 
             case EnemyType.Normal:
                 health = 100f * healthMultiplier;
-                damage = 10f * damageMultiplier;
-                speed = 2.5f;
+                damage = 1f * damageMultiplier;
+                speed = 2f;
                 break;
 
             case EnemyType.Strong:
                 health = 150f * healthMultiplier;
-                damage = 20f * damageMultiplier;
-                speed = 2.25f;
+                damage = 2f * damageMultiplier;
+                speed = 1.5f;
                 break;
         }
 
