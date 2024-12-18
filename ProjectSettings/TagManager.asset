@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Spawner
   - Tree
+  - SnowBallReloader
+  - SnowBall
   layers:
   - Default
   - TransparentFX

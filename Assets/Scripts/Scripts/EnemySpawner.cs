@@ -21,25 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(WaveController());
-    }
-
-    private void FindSpawners(Transform parent)
-    {
-        foreach (Transform child in parent)
-        {
-            // Проверка тега дочернего объекта
-            if (child.CompareTag("Spawner"))
-            {
-                spawnerList.Add(child);
-            }
-
-            // Рекурсивный вызов для поиска в дочерних объектах
-            if (child.childCount > 0)
-            {
-                FindSpawners(child);
-            }
-        }
+        //StartCoroutine(WaveController());
     }
     
     private IEnumerator WaveController()
