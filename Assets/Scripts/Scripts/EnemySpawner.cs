@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs; // Префабы врагов (Weak, Normal, Strong)
-    public float spawnInterval = 5f; // Интервал спавна врагов
+    public float spawnInterval = 7f; // Интервал спавна врагов
 
     private float timeSinceLastSpawn;
     public List<Transform> spawnPoints = new List<Transform>(); // Список точек для спавна
@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        //StartCoroutine(WaveController());
+        StartCoroutine(WaveController());
     }
     
     private IEnumerator WaveController()
@@ -64,7 +64,7 @@ public class EnemySpawner : MonoBehaviour
 
             // Выбираем случайную точку спавна из доступных
             Vector3 spawnPosition;
-            int randomIndex = Random.Range(0, spawnPoints.Count);
+            int randomIndex = Random.Range(0, availableSpawnPoints.Count);
             spawnPosition = availableSpawnPoints[randomIndex].position;
 
 

@@ -52,18 +52,18 @@ public class EnemyBehaviour : MonoBehaviour
         {
             case EnemyType.Weak:
                 health = 50f * healthMultiplier;
-                damage = 0.5f * damageMultiplier;
-                speed = 2.75f;
-                break;
-
-            case EnemyType.Normal:
-                health = 100f * healthMultiplier;
                 damage = 1f * damageMultiplier;
                 speed = 2f;
                 break;
 
+            case EnemyType.Normal:
+                health = 75f * healthMultiplier;
+                damage = 1.5f * damageMultiplier;
+                speed = 1.75f;
+                break;
+
             case EnemyType.Strong:
-                health = 150f * healthMultiplier;
+                health = 100f * healthMultiplier;
                 damage = 2f * damageMultiplier;
                 speed = 1.5f;
                 break;
