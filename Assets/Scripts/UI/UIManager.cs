@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -7,7 +8,6 @@ public class UIManager : MonoBehaviour
 
     public GameObject nextWaveMenu;
     public GameObject gameOverMenu;
-    public Slider treeHealthSlider;
 
     private void Awake()
     {
@@ -18,7 +18,21 @@ public class UIManager : MonoBehaviour
     public void ShowNextWaveMenu(System.Action onContinue)
     {
         nextWaveMenu.SetActive(true);
-        Button continueButton = nextWaveMenu.GetComponentInChildren<Button>();
+        Button restartButton = nextWaveMenu.transform.Find("Restart").GetComponent<Button>();
+        Button quitButton = nextWaveMenu.transform.Find("Quit").GetComponent<Button>();
+        Button continueButton = nextWaveMenu.transform.Find("Continue").GetComponent<Button>();
+
+        restartButton.onClick.RemoveAllListeners();
+        restartButton.onClick.AddListener(() => {
+            nextWaveMenu.SetActive(false);
+            GameManager.Instance.RestartGame();
+        });
+
+        quitButton.onClick.RemoveAllListeners();
+        quitButton.onClick.AddListener(() => {
+            SceneManager.LoadScene(0);
+        });
+
         continueButton.onClick.RemoveAllListeners();
         continueButton.onClick.AddListener(() => {
             nextWaveMenu.SetActive(false);
@@ -31,20 +45,11 @@ public class UIManager : MonoBehaviour
         nextWaveMenu.SetActive(false);
     }
 
-    public void UpdateTreeHealth(float currentHealth, float maxHealth)
-    {
-        if (treeHealthSlider != null)
-        {
-            treeHealthSlider.maxValue = maxHealth;
-            treeHealthSlider.value = currentHealth;
-        }
-    }
-
     public void ShowGameOverMenu()
     {
         gameOverMenu.SetActive(true);
-        Button restartButton = gameOverMenu.transform.Find("RestartButton").GetComponent<Button>();
-        Button quitButton = gameOverMenu.transform.Find("QuitButton").GetComponent<Button>();
+        Button restartButton = gameOverMenu.transform.Find("Restart").GetComponent<Button>();
+        Button quitButton = gameOverMenu.transform.Find("Quit").GetComponent<Button>();
 
         restartButton.onClick.RemoveAllListeners();
         restartButton.onClick.AddListener(() => {
@@ -54,7 +59,7 @@ public class UIManager : MonoBehaviour
 
         quitButton.onClick.RemoveAllListeners();
         quitButton.onClick.AddListener(() => {
-            Application.Quit();
+            SceneManager.LoadScene(0);
         });
     }
 }
