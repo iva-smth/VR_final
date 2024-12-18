@@ -27,9 +27,10 @@ public class Snowball : MonoBehaviour
         }
 
         // ”ничтожаем снежок, если столкновение не с Player и Box
-        if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Box") && !collision.gameObject.CompareTag("Snow"))
+        if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("SnowBallReloader") && !collision.gameObject.CompareTag("SnowBall"))
         {
             DestroySnowball();
+            SnowballManager.Instance.SpawnSnowball();
         }
     }
 

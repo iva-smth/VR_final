@@ -17,16 +17,7 @@ public class SnowballManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    private void Update()
-    {
-        // Пополняем снежки, если их меньше 10
-        while (snowballs.Count < maxSnowballs)
-        {
-            SpawnSnowball();
-        }
-    }
-
-    private void SpawnSnowball()
+    public void SpawnSnowball()
     {
         GameObject newSnowball = Instantiate(snowballPrefab, spawnPoint.position, Quaternion.identity);
         snowballs.Add(newSnowball);
