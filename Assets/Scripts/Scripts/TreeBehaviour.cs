@@ -20,7 +20,6 @@ public class TreeBehaviour : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-        UIManager.Instance.UpdateTreeHealth(currentHealth, maxHealth);
     }
 
     private void Update()
