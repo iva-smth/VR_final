@@ -7,12 +7,23 @@ using UnityEngine.XR.OpenXR.Features.Interactions;
 
 public class Name : MonoBehaviour
 {
+    public Name instance;
+
     private string playerName = "";
 
-    public void SetName(string name)
+
+    private void Awake()
+    {
+        instance = this;
+    }
+    public void SetName(TMP_Text name)
     {
         if (name != null)
-            playerName = name;
+            playerName = name.text;
         else playerName = "AnonymPlayer";
+
+        Debug.Log(playerName);
     }
+
+    
 }

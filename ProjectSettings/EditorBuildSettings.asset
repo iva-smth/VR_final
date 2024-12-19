@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menu/MenuScene.unity
     guid: 5efab54886355294caf1c6c3f35fb180
-  - enabled: 0
+  - enabled: 1
     path: Assets/LB6/lb6.unity
     guid: 054601fbc208ffb4d8910de612029c4f
   m_configObjects:
