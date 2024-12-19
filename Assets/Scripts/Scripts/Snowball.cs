@@ -3,15 +3,12 @@ using System;
 
 public class Snowball : MonoBehaviour
 {
-    public float speed = 10f;
-    public float damage = 30f;
+    public float damage = 55;
 
     public Action OnDestroyed; // Событие при уничтожении снежка
 
     private void Start()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * speed;
     }
 
     private void OnCollisionEnter(Collision collision)

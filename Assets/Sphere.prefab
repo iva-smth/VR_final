@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7345071205263092542}
   - component: {fileID: 21555093947029175}
   - component: {fileID: 3395538407857166848}
-  - component: {fileID: -4210203092512981400}
+  - component: {fileID: 8541607669962288184}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: SnowBall
@@ -116,7 +116,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4318600611050065574}
   serializedVersion: 4
-  m_Mass: 0.01
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_SmoothScaleAmount: 8
   m_TightenScale: 0.1
   m_ThrowOnDetach: 1
-  m_ThrowSmoothingDuration: 1
+  m_ThrowSmoothingDuration: 0.25
   m_ThrowSmoothingCurve:
     serializedVersion: 2
     m_Curve:
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!114 &-4210203092512981400
+--- !u!114 &8541607669962288184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,5 +299,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07acae3a8d29b39408cc1ac02113a800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  damage: 10
+  damage: 30

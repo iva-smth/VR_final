@@ -37,13 +37,6 @@ public class EnemyBehaviour : MonoBehaviour
         obstacle = GetComponent<NavMeshObstacle>();
         treeTarget = GameObject.FindWithTag("Tree")?.transform;
         if (treeTarget != null) agent.SetDestination(treeTarget.position);
-
-       // Debug.Log(gameObject.GetComponent<Collider>().size);
-    }
-
-    void Update()
-    {
-        
     }
 
     public void SetStats(float healthMultiplier, float damageMultiplier)
@@ -51,20 +44,20 @@ public class EnemyBehaviour : MonoBehaviour
         switch (enemyType)
         {
             case EnemyType.Weak:
-                health = 50f * healthMultiplier;
-                damage = 1f * damageMultiplier;
+                health = 40f * healthMultiplier;
+                damage = 1.25f * damageMultiplier;
                 speed = 2f;
                 break;
 
             case EnemyType.Normal:
-                health = 75f * healthMultiplier;
+                health = 80f * healthMultiplier;
                 damage = 1.5f * damageMultiplier;
                 speed = 1.75f;
                 break;
 
             case EnemyType.Strong:
-                health = 100f * healthMultiplier;
-                damage = 2f * damageMultiplier;
+                health = 120f * healthMultiplier;
+                damage = 1.75f * damageMultiplier;
                 speed = 1.5f;
                 break;
         }

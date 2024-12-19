@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -12,12 +13,13 @@ public class EnemySpawner : MonoBehaviour
     public List<Transform> spawnPoints = new List<Transform>(); // Список точек для спавна
 
     private int enemiesPerSpawn = 3; // Количество врагов за раз
-    private int totalEnemiesInWave = 9; // Всего врагов в одной волне
+    private int totalEnemiesInWave = 6; // Всего врагов в одной волне
     public float waveDelay = 1f; // Задержка перед появлением меню после волны
     private float healthMultiplier = 1f; // Множитель здоровья врагов
     private float damageMultiplier = 1f; // Множитель урона врагов
     private int lastWaveNum = 0;
     public List<Transform> spawnerList = new List<Transform>();
+    public TMP_Text timerText;
 
     private void Start()
     {
@@ -28,6 +30,12 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
+            for (int countdown = 3; countdown > 0; countdown--)
+            {
+                timerText.text = $"До начала волны: {countdown}...";
+                yield return new WaitForSeconds(1f);
+            }
+            timerText.text = ""; 
             yield return StartCoroutine(SpawnWave());
             yield return new WaitForSeconds(waveDelay);
             yield return StartCoroutine(WaitForPlayerDecision());
