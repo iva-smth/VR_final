@@ -4042,7 +4042,6 @@ MonoBehaviour:
   - {fileID: 1351642304}
   - {fileID: 204809426}
   - {fileID: 295261243}
-  waveDelay: 10
   spawnerList: []
   timerText: {fileID: 1518416643}
 --- !u!65 &602916113
@@ -6735,7 +6734,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10271,6 +10270,8 @@ GameObject:
   - component: {fileID: 1459725647}
   - component: {fileID: 1459725648}
   - component: {fileID: 1459725649}
+  - component: {fileID: 1459725651}
+  - component: {fileID: 1459725650}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -10319,6 +10320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b235abd9c6f431a4bb62f54402a15ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deadCount: 0
 --- !u!114 &1459725647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10361,6 +10363,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeaderBoard: {fileID: 0}
   Menu: {fileID: 0}
+  keyboard: {fileID: 0}
+--- !u!114 &1459725650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459725642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719e106878580de41a5fe3c397802da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leaderboard:
+    list: []
+--- !u!114 &1459725651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459725642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24ab51fb88ae6d47a88b7dc18940c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highScoreDisplayArray: []
 --- !u!1001 &1464086291
 PrefabInstance:
   m_ObjectHideFlags: 0

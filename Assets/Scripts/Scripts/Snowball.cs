@@ -3,7 +3,7 @@ using System;
 
 public class Snowball : MonoBehaviour
 {
-    public float damage = 55;
+    private float damage = 55;
 
     public Action OnDestroyed; // Событие при уничтожении снежка
 

@@ -7,14 +7,14 @@ using TMPro;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs; // Префабы врагов (Weak, Normal, Strong)
-    public float spawnInterval = 7f; // Интервал спавна врагов
+    private float spawnInterval = 10f; // Интервал спавна врагов
 
     private float timeSinceLastSpawn;
     public List<Transform> spawnPoints = new List<Transform>(); // Список точек для спавна
 
-    private int enemiesPerSpawn = 3; // Количество врагов за раз
+    private int enemiesPerSpawn = 2; // Количество врагов за раз
     private int totalEnemiesInWave = 6; // Всего врагов в одной волне
-    public float waveDelay = 1f; // Задержка перед появлением меню после волны
+    private float waveDelay = 1f; // Задержка перед появлением меню после волны
     private float healthMultiplier = 1f; // Множитель здоровья врагов
     private float damageMultiplier = 1f; // Множитель урона врагов
     private int lastWaveNum = 0;

@@ -92,6 +92,8 @@ public class EnemyBehaviour : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+        OnDeath?.Invoke();
+        EnemyManager.Instance.deadCount++;
     }
 
     void OnTriggerEnter(Collider other)
@@ -127,8 +129,6 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
     }
-
-
 
     private IEnumerator DamageTreeOverTime()
     {

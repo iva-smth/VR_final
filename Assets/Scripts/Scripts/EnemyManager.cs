@@ -8,6 +8,8 @@ public class EnemyManager : MonoBehaviour
 
     private List<GameObject> enemies = new List<GameObject>();
 
+    public int deadCount = 0;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -17,6 +19,8 @@ public class EnemyManager : MonoBehaviour
     public void RegisterEnemy(GameObject enemy)
     {
         enemies.Add(enemy);
-        enemy.GetComponent<EnemyBehaviour>().OnDeath += () => enemies.Remove(enemy);
+        enemy.GetComponent<EnemyBehaviour>().OnDeath += () => {
+            enemies.Remove(enemy);
+        };
     }
 }

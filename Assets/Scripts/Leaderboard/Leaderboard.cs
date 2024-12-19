@@ -42,11 +42,11 @@ public class Leaderboard : MonoBehaviour
     {
         scores.Add(new LeaderboardEntry { name = entryName, score = entryScore });
     }
+
 }
 
-public class LeaderboardEntry
+public class LeaderboardEntry : MonoBehaviour
 {
     public string name;
     public float score;
 }
-
