@@ -7,9 +7,9 @@ using UnityEngine.XR.OpenXR.Features.Interactions;
 
 public class Name : MonoBehaviour
 {
-    public Name instance;
+    public static Name instance;
 
-    private string playerName = "";
+    public string playerName = "";
 
 
     private void Awake()

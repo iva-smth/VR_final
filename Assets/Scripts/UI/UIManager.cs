@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
 
         quitButton.onClick.RemoveAllListeners();
         quitButton.onClick.AddListener(() => {
+            Leaderboard.instance.AddNewScore(Name.instance.playerName, EnemyManager.Instance.deadCount);
             SceneManager.LoadScene(0);
         });
 
@@ -59,6 +60,9 @@ public class UIManager : MonoBehaviour
 
         quitButton.onClick.RemoveAllListeners();
         quitButton.onClick.AddListener(() => {
+        Leaderboard.instance.AddNewScore(Name.instance.playerName, EnemyManager.Instance.deadCount);
+        Debug.Log(Name.instance.playerName);
+        Debug.Log(EnemyManager.Instance.deadCount);
             SceneManager.LoadScene(0);
         });
     }

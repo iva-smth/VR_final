@@ -30,7 +30,7 @@ public class XMLManager : MonoBehaviour
         serializer.Serialize(stream, leaderboard);
         foreach (LeaderboardEntry entry in scoresToSave)
         {
-            Debug.Log(entry.name);
+            Debug.Log(entry.playername);
         }    
         stream.Close();
     }

@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        Leaderboard.instance.AddNewScore(Name.instance.playerName, EnemyManager.Instance.deadCount);
+
         SceneManager.LoadScene(1);
     }
 }

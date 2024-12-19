@@ -45,4 +45,8 @@ public class TreeBehaviour : MonoBehaviour
             UIManager.Instance.ShowGameOverMenu();
         }
     }
+    public void resetTree()
+    {
+        currentHealth = maxHealth;
+    }
 }

@@ -29,7 +29,7 @@ public class Leaderboard : MonoBehaviour
         {
             if (i < scores.Count)
             {
-                highScoreDisplayArray[i].DisplayHighScore(scores[i].name, scores[i].score);
+                highScoreDisplayArray[i].DisplayHighScore(scores[i].playername, scores[i].score);
             }
             else
             {
@@ -38,15 +38,17 @@ public class Leaderboard : MonoBehaviour
         }
     }
 
-    public void AddNewScore(string entryName, float entryScore)
+    public void AddNewScore(string entryName, int entryScore)
     {
-        scores.Add(new LeaderboardEntry { name = entryName, score = entryScore });
+        scores.Add(new LeaderboardEntry { playername = entryName, score = entryScore });
+        XMLManager.instance.SaveScores(scores);
+        Debug.Log(scores);
     }
 
 }
 
-public class LeaderboardEntry : MonoBehaviour
+public class LeaderboardEntry
 {
-    public string name;
-    public float score;
+    public string playername;
+    public int score;
 }

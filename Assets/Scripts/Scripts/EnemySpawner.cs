@@ -12,8 +12,8 @@ public class EnemySpawner : MonoBehaviour
     private float timeSinceLastSpawn;
     public List<Transform> spawnPoints = new List<Transform>(); // Список точек для спавна
 
-    private int enemiesPerSpawn = 2; // Количество врагов за раз
-    private int totalEnemiesInWave = 6; // Всего врагов в одной волне
+    private int enemiesPerSpawn = 1; // Количество врагов за раз
+    private int totalEnemiesInWave = 1; // Всего врагов в одной волне
     private float waveDelay = 1f; // Задержка перед появлением меню после волны
     private float healthMultiplier = 1f; // Множитель здоровья врагов
     private float damageMultiplier = 1f; // Множитель урона врагов
@@ -36,6 +36,7 @@ public class EnemySpawner : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
             timerText.text = ""; 
+            TreeBehaviour.instance.resetTree();
             yield return StartCoroutine(SpawnWave());
             yield return new WaitForSeconds(waveDelay);
             yield return StartCoroutine(WaitForPlayerDecision());
